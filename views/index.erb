@@ -1,8 +1,21 @@
 <html>
-  <head></head>
-  <body>
-    <p>
-      The SECRET NUMBER is <%= number %>
-    </p>
-  </body>
+<title>Web Number Guesser
+	</title>
+<head><h1>GUESS THE SECRET NUMBER</h1></head>
+<body>
+	<p>
+		<% if @user_guess[2] < number
+			puts "The Number Is Too High"
+			elsif @user_guess[2] > number
+			puts "The Number Is Too Low"
+			end%>
+	</p>
+	<p>
+		The SECRET NUMBER is <%= number %>
+	</p>
+	<form>
+		<input type='text' name='guess' />
+		<input type='submit' value='Guess!' />
+	</form>
+</body>
 </html>
