@@ -8,9 +8,6 @@
 </style>
 <body>
 	<p><%= message %></p>
-	<p><%= if params["guess"] == number
-			"The secret number is #{number}"
-			end %></p>
 	<form>
 		<input type='text' name='guess' />
 		<input type='submit' value='Guess!' />

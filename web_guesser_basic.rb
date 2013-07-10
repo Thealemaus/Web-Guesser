@@ -17,6 +17,7 @@ def choose_message(guess, number)
 	elsif guess.to_i < number
 		"Too low!"
 	else guess.to_i == number
-		"You got it right!"
+		"You got it right! 
+		The Secret Number was #{number}"
 	end
 end
