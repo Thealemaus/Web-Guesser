@@ -1,18 +1,16 @@
 <html>
-<title>Web Number Guesser
-	</title>
-<head><h1>GUESS THE SECRET NUMBER</h1></head>
+<title>Web Number Guesser</title>
+<head><h1>GUESS THAT! NUMBER</h1></head>
+<style>
+	body {
+		background: red;
+	}
+</style>
 <body>
-	<p>
-		<% if @user_guess[2] < number
-			puts "The Number Is Too High"
-			elsif @user_guess[2] > number
-			puts "The Number Is Too Low"
-			end%>
-	</p>
-	<p>
-		The SECRET NUMBER is <%= number %>
-	</p>
+	<p><%= message %></p>
+	<p><%= if params["guess"] == number
+			"The secret number is #{number}"
+			end %></p>
 	<form>
 		<input type='text' name='guess' />
 		<input type='submit' value='Guess!' />
