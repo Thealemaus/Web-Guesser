@@ -1,23 +1,29 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-
-number = (1 + rand(99))
-
+number = (1 + rand(99)).to_s
+chances = 5
+chances_before = 0
 get "/" do
-	message = choose_message(params["guess"], number)
-	erb :index, :locals => {:number => number, :message => message}
-end
 
-def choose_message(guess, number)
-	if guess.nil?
-		""
-	elsif guess.to_i > number
-		"Too high!"
-	elsif guess.to_i < number
-		"Too low!"
-	else guess.to_i == number
-		"You got it right! 
-		The Secret Number was #{number}"
+	if chances > 0 && chances_before != params["guess"] 
+		chances = chances - 1
+	elsif chances < 1 
+		chances = 8
+		number = (rand(99)+1).to_s
 	end
+
+	if params["guess"].to_i > number.to_i + 5
+		guess = "Way Too High"
+	elsif params["guess"].to_i < number.to_i - 5
+		guess = "Way Too Low"
+	elsif params["guess"].to_i > number.to_i
+		guess = "Too High!"
+	elsif params["guess"].to_i < number.to_i
+		guess = "Too Low"
+	else
+		guess = "Correct, the secret number was #{number}"
+	end
+
+	erb :index, :locals => {:number => number, :guess => guess}
 end
